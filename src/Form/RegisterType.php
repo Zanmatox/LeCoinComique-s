@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Length;
 
 class RegisterType extends AbstractType
 {
@@ -54,12 +55,16 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label' => 'Mot de passe',
+                    'attr' => [
                     'placeholder' => 'Merci de saisir votre mot de passe'
+                    ]
                     ],
                 'second_options' => [
                     'label' => 'Confirmez votre mot de passe',
+                    'attr' => [
                     'placeholder' => 'Merci de confirmez votre mot de passe'
                     ]
+                    ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => "S'inscrire"
