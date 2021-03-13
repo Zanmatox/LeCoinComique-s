@@ -1,12 +1,48 @@
+body {
+    position: relative;
+}
+
+
 .navbar-item-custom, .navbar-item-custom a {
     color: #fff;
 }
 
 .footer-custom {
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: #dfeaff;
     padding-top: 25px;
+}
+
+.produit-item h5 {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+
+.produit-item {
+    margin-top: 50px;
+}
+
+.produit-item .produit-auteur {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.produit-item .produit-prixpublic {
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+
+}
+
+.produit-container {
+    margin-bottom: 150px;
+}
+
+.produit-page-prix {
+    font-size: 19px;
 }

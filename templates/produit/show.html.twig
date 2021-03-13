@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.titre }} - Le Coin Comique's{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-5">
+            <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.titre }}" class="img-fluid">
+        </div>
+    <div class="col-md-7">
+        <h3> {{ produit.titre }}</h3>
+        <p>{{ produit.auteur }}</p>
+        <span class="produit-page-prix">{{ (produit.prixpublic)|number_format(2, ',','.')}} €</span>
+        <hr>
+        <p>
+            {{ produit.resume }}
+        </p>
+        <a href="" class="btn btn-primary">Ajouter au panier</a>
+        </div>
+    </div>
+{% endblock %}
