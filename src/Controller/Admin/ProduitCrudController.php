@@ -4,6 +4,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Produit;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\StringField;
+
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -12,14 +20,27 @@ class ProduitCrudController extends AbstractCrudController
         return Produit::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('ref_bd'),
+            TextField::new('heros'),
+            TextField::new('titre'),
+            SlugField::new('slug')->setTargetFieldName('titre'),
+            AssociationField::new('fournisseur'),
+            AssociationField::new('auteur'),
+            AssociationField::new('genre'),
+            ImageField::new('illustration')
+            ->setBasePath('uploads/')
+            ->setUploadDir('public/uploads/')
+            ->setUploadedFileNamePattern('[randomhash].[extension]')
+            ->setRequired(false),
+            TextareaField::new('resume'),
+            MoneyField::new('prix_public')->setCurrency('EUR'),
+            MoneyField::new('prix_editeur')->setCurrency('EUR'),
+
         ];
     }
-    */
+    
 }

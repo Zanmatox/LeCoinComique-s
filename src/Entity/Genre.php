@@ -39,6 +39,10 @@ class Genre
         $this->produits = new ArrayCollection();
     }
 
+    public function __toString() {
+        return $this->getGenre();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
