@@ -31,18 +31,21 @@ class ProduitRepository extends ServiceEntityRepository
         ->createQueryBuilder('p')
         ->select('g','p')
         ->join('p.genre', 'g');
+
         if (!empty($search->genres)) {
             $query = $query
             ->andWhere('g.id IN (:genres)')
             ->setParameter('genres', $search->genres);
         }
-        //Search par nom de titre ne fonctionne pas
+
         if (!empty($search->string)) {
             $query = $query
-            ->andWhere('p.genre LIKE (:string)')
+            ->andWhere('p.titre LIKE :string')
             ->setParameter('string', "%{$search->string}%");
         }
+
         return $query->getQuery()->getResult();
+
     }
     // /**
     //  * @return Produit[] Returns an array of Produit objects
