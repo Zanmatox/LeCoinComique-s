@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier - Le Coin Comique's{% endblock %}
+
+{% block content %}
+<h1>Mon panier</h1>
+Retrouver l'ensemble des produits que vous avez ajouté à votre panier.
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Produit</th>
+      <th scope="col"></th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% set total = null %}
+  {% for product in cart %}
+    <tr>
+      <th>
+      <img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.titre }}" height="200px"><br>
+      </th>
+      <td>
+      {{ product.product.titre }}<br/>
+      <small>{{ product.product.auteur }}</small>
+      </td>
+      <td>x {{ product.quantity }}</td>
+      <td>{{ product.product.prixpublic | number_format(2, ',', '.') }} €</td>
+      <td>{{ (product.product.prixpublic * product.quantity) | number_format(2, ',', '.') }} €</td>
+    </tr>
+    {% set total = total + (product.product.prixpublic * product.quantity) %}
+    {% endfor %}
+  </tbody>
+</table>
+<div class="text-right mb-5">
+    <b>Nombre de produit différent : </b> {{ cart|length }} <br/>
+    <b>Total de mon panier : </b> {{ total | number_format(2, ',', '.') }} €
+    <a href="" class="btn btn-success btn-block mt-3">Valider mon panier</a>
+</div>
+{% endblock %}

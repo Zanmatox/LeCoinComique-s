@@ -43,11 +43,11 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/produit/{slug}", name="produit")
+     * @Route("/produit/{titre}", name="produit")
      */
-    public function show($slug)
+    public function show($titre)
     {
-        $produit = $this->entityManager->getRepository(Produit::class)->findOneBySlug($slug);
+        $produit = $this->entityManager->getRepository(Produit::class)->findOneByTitre($titre);
        
 
         if (!$produit) {

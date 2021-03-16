@@ -17,8 +17,8 @@
             <div class="col-md-4">
                 <div class="produit-item text-center">
                     {# Cliquer sur une image de produit ne permet pas d'acceder a ses details #}
-                    {# <a href="{{ path('produit', { 'slug' : produit.slug } ) }}"><img src="/uploads/{{ produit.illustration }}" alt="{{ produit.titre }}" class="img-fluid"></a> #}
-                    <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.titre }}" class="img-fluid">
+                    <a href="{{ path('produit', { 'titre' : produit.titre } ) }}"><img src="/uploads/{{ produit.illustration }}" alt="{{ produit.titre }}" class="img-fluid"></a>
+                    {# <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.titre }}" class="img-fluid"> #}
                     <h5>{{ produit.titre }}</h5>
                     <span class="produit-auteur">{{ produit.auteur }}</span>
                     <span class="produit-prixpublic">{{ (produit.prixpublic)|number_format(2, ',','.')}} €</span>
