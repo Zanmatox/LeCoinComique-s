@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande - Le Coin Comique's{% endblock %}
+
+{% block content %}
+    <h2> Je passe ma commande</h2>
+    <p> Choississez vos préférences avant de passer voter commande sur Le Coin Comique's.</p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+                {{ form(form) }}
+            {% endset %}
+
+            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+
+            <b>Choisir mon transporteur</b>
+        </div>
+        <div class="col-md-6">
+            <b>Récap de ma commande</b></br>
+            <b>Bouton payer</b>
+        </div>
+    </div>
+{% endblock %}

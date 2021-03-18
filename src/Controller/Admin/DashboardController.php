@@ -8,6 +8,7 @@ use App\Entity\Auteur;
 use App\Entity\Editeur;
 use App\Entity\Fournisseur;
 use App\Entity\Produit;
+use App\Entity\Carrier;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -39,5 +40,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Editeur', 'fas fa-newspaper', Editeur::class);
         yield MenuItem::linkToCrud('Fournisseur', 'fas fa-business-time', Fournisseur::class);
         yield MenuItem::linkToCrud('Produit', 'fas fa-book', Produit::class);
+        yield MenuItem::linkToCrud('Transporteur', 'fas fa-truck', Carrier::class);
     }
 }
