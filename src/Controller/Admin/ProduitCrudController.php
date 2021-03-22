@@ -11,7 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\StringField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -37,6 +37,7 @@ class ProduitCrudController extends AbstractCrudController
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),
             TextareaField::new('resume'),
+            BooleanField::new('isBest'),
             MoneyField::new('prix_public')->setCurrency('EUR'),
             MoneyField::new('prix_editeur')->setCurrency('EUR'),
 

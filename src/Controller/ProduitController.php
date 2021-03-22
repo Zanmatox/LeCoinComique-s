@@ -48,14 +48,16 @@ class ProduitController extends AbstractController
     public function show($titre)
     {
         $produit = $this->entityManager->getRepository(Produit::class)->findOneByTitre($titre);
-       
+        $product = $this->entityManager->getRepository(Produit::class)->findByIsBest(1);
+          
 
         if (!$produit) {
             return $this->redirectToRoute('produits');
         }
         
         return $this->render('produit/show.html.twig', [
-            'produit' => $produit
+            'produit' => $produit,
+            'produits' => $product
         ]);
     }
 }
