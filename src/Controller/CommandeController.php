@@ -47,8 +47,7 @@ class CommandeController extends AbstractController
             $date = new \DateTime();
             $carriers = $form->get('carriers')->getData();
             $delivery = $form->get('adresses')->getData();
-            //$delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
-            dd($delivery);
+            //dd($delivery);
 
             $commande = new Commande();
             $commande->setUser($this->getUser());
