@@ -63,3 +63,7 @@ body {
     padding: 20px;
     margin-top: 22px;
 } 
+
+.carousel-caption {
+    color: black;
+}
