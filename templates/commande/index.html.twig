@@ -8,17 +8,34 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            {% set formHtml %}
-                {{ form(form) }}
+            {% set formHtml %} 
+                {{ form_start(form, {action:path('commande_recap')}) }}
+                {{ form_end(form) }}
             {% endset %}
 
             {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
 
-            <b>Choisir mon transporteur</b>
         </div>
-        <div class="col-md-6">
-            <b>Récap de ma commande</b></br>
-            <b>Bouton payer</b>
-        </div>
+        <div class="col-md-6"> 
+    <div class="text-center">
+    <b>Récap de ma commande</b><br/>
+    <p>Retrouver le récapitulatif de vos produits.</p><br/>
+    </div>
+    <div class="commande-summary">
+    {% for key,product in cart %}
+        <div class="row {% if key > 0 %}mt-2{% endif %}">
+            <div class="col-2"> 
+                <img src="/uploads/{{ product.product.illustration }} " alt="{{ product.product.titre }}" height="75px">
+            </div>
+            <div class="col-8 my-auto">
+                    {{ product.product.titre }}
+                    <small>{{ product.product.auteur }}</small>
+            </div>
+            <div class="col-2 my-auto">
+                    x {{ product.quantity }}
+                </div> 
+            </div> 
+    {% endfor %}
+    </div>
     </div>
 {% endblock %}
