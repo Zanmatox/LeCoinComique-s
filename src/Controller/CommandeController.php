@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\CommandeType;
 use App\Classe\Cart;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Commande;
 
 class CommandeController extends AbstractController
 {
@@ -43,10 +44,22 @@ class CommandeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());
+            $date = new \DateTime();
+            $carriers = $form->get('carriers')->getData();
+            $delivery = $form->get('adresses')->getData();
+            //$delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
+            dd($delivery);
+
+            $commande = new Commande();
+            $commande->setUser($this->getUser());
+            $commande->setCreatedAt($date);
+            $commande->setCarrierName($carriers->getName());
+            $commande->setCarrierPrice($carriers->getPrice());
+
+            //Enregistrer  ses produits
         }
 
-        return $this->render('commande/index.html.twig', [
+        return $this->render('commande/add.html.twig', [
             'cart' => $cart->getFull()
         ]);
     }
